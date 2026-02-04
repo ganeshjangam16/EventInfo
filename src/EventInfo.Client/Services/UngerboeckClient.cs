@@ -142,7 +142,7 @@ public class UngerboeckClient : IUngerboeckClient
     {
         try
         {
-            var type = (Type)obj.GetType();
+            var type = obj.GetType();
             var property = type.GetProperty(propertyName);
             if (property != null)
             {

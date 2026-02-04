@@ -20,14 +20,32 @@ var defaultOrgCode = builder.Configuration["Ungerboeck:DefaultOrganizationCode"]
 builder.Services.AddSingleton<IUngerboeckClient>(sp => 
     new UngerboeckClient(ungerboeckConfig, defaultOrgCode));
 
-// Add CORS if needed
+// Add CORS with environment-based configuration
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
+        if (builder.Environment.IsDevelopment())
+        {
+            // Allow all origins in development for easier testing
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        }
+        else
+        {
+            // In production, restrict to specific origins
+            // Configure allowed origins via appsettings.json or environment variables
+            var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() 
+                ?? Array.Empty<string>();
+            
+            if (allowedOrigins.Length > 0)
+            {
+                policy.WithOrigins(allowedOrigins)
+                      .AllowAnyMethod()
+                      .AllowAnyHeader();
+            }
+        }
     });
 });
 

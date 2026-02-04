@@ -85,9 +85,9 @@ cd src/EventInfo.Api
 dotnet run
 ```
 
-The API will start and listen on:
-- HTTPS: https://localhost:5001
-- HTTP: http://localhost:5000
+The API will start and listen on (configured in launchSettings.json):
+- HTTPS: https://localhost:7238
+- HTTP: http://localhost:5064
 
 ## API Endpoints
 
@@ -150,19 +150,19 @@ Returns order headers (summary information) for a specific event.
 ### Using curl
 ```bash
 # Get all events
-curl https://localhost:5001/api/events
+curl https://localhost:7238/api/events
 
 # Get specific event
-curl https://localhost:5001/api/events/12345
+curl https://localhost:7238/api/events/12345
 
 # Get orders for an event
-curl https://localhost:5001/api/events/12345/orders
+curl https://localhost:7238/api/events/12345/orders
 ```
 
 ### Using OpenAPI/Swagger (Development Mode)
 When running in Development mode, navigate to:
 ```
-https://localhost:5001/openapi/v1.json
+https://localhost:7238/openapi/v1.json
 ```
 
 ## Dependencies
