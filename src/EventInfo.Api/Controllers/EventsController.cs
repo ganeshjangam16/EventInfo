@@ -37,7 +37,7 @@ public class EventsController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error retrieving event {EventId}", eventId);
-            return StatusCode(500, new { error = "An error occurred while retrieving the event", details = ex.Message });
+            return StatusCode(500, new { error = "An error occurred while retrieving the event" });
         }
     }
 
@@ -60,7 +60,7 @@ public class EventsController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error retrieving orders for event {EventId}", eventId);
-            return StatusCode(500, new { error = "An error occurred while retrieving event orders", details = ex.Message });
+            return StatusCode(500, new { error = "An error occurred while retrieving event orders" });
         }
     }
 
@@ -82,7 +82,7 @@ public class EventsController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error retrieving events");
-            return StatusCode(500, new { error = "An error occurred while retrieving events", details = ex.Message });
+            return StatusCode(500, new { error = "An error occurred while retrieving events" });
         }
     }
 }

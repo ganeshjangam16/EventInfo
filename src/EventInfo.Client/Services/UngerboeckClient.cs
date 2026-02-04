@@ -129,9 +129,11 @@ public class UngerboeckClient : IUngerboeckClient
 
             return orderHeaders;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            // Return empty list if orders endpoint is not available or configured
+            // Log the exception for debugging, but return empty list for graceful degradation
+            // This handles cases where Orders endpoint might not be available or configured
+            System.Diagnostics.Debug.WriteLine($"Warning: Unable to retrieve orders for event {eventId}: {ex.Message}");
             return Array.Empty<OrderHeader>();
         }
     }
