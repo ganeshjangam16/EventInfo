@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/EventInfo.Api/EventInfo.Api.csproj" />
+    <Project Path="src/EventInfo.Client/EventInfo.Client.csproj" />
+  </Folder>
+</Solution>
