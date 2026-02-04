@@ -16,8 +16,9 @@ var ungerboeckConfig = builder.Configuration.GetSection("Ungerboeck").Get<Ungerb
 var defaultOrgCode = builder.Configuration["Ungerboeck:DefaultOrganizationCode"] 
     ?? throw new InvalidOperationException("DefaultOrganizationCode is required");
 
-// Register Ungerboeck client as a singleton
-builder.Services.AddSingleton<IUngerboeckClient>(sp => 
+// Register Ungerboeck client as scoped (one instance per request)
+// This ensures proper resource management and connection handling
+builder.Services.AddScoped<IUngerboeckClient>(sp => 
     new UngerboeckClient(ungerboeckConfig, defaultOrgCode));
 
 // Add CORS with environment-based configuration

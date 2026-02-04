@@ -155,7 +155,8 @@ public class UngerboeckClient : IUngerboeckClient
         }
         catch
         {
-            // Property doesn't exist or conversion failed
+            // Property doesn't exist or conversion failed - this is expected when checking
+            // for properties that may not exist in all Ungerboeck API versions
         }
         return default(T);
     }
