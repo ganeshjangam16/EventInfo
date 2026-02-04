@@ -1,0 +1,19 @@
+@EventInfo.Api_HostAddress = http://localhost:5064
+
+# Get all events
+GET {{EventInfo.Api_HostAddress}}/api/events
+Accept: application/json
+
+###
+
+# Get specific event (replace 12345 with actual event ID)
+GET {{EventInfo.Api_HostAddress}}/api/events/12345
+Accept: application/json
+
+###
+
+# Get orders for a specific event (replace 12345 with actual event ID)
+GET {{EventInfo.Api_HostAddress}}/api/events/12345/orders
+Accept: application/json
+
+###
